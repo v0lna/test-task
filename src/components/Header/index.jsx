@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import style from './style.module.css';
 
 const Header = () => {
@@ -6,20 +7,20 @@ const Header = () => {
     <header className={style.headerContainer}>
       <div className={style.navContainer}>
         <div className={style.navItemContainer}>
-          <a className={style.navItem} href="/">
+          <Link className={style.navItem} to="/">
             Users
-          </a>
+          </Link>
         </div>
 
         <div className={style.navItemContainer}>
-          <a className={style.navItem} href="/add">
+          <Link className={style.navItem} to="/add">
             New user
-          </a>
+          </Link>
         </div>
         <div className={style.navItemContainer}>
-          <a className={style.navItem} href="/about">
+          <Link className={style.navItem} to="/about">
             About me
-          </a>
+          </Link>
         </div>
       </div>
     </header>
