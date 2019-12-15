@@ -7,11 +7,13 @@ export default function getUsers() {
       dispatch({ type: USERS_REQUEST });
 
       const resJson = await fetch(url);
+      let res = null;
       if (!resJson.ok) {
-        return dispatch({ type: USERS_ERROR, payload: resJson });
+        dispatch({ type: USERS_ERROR, payload: resJson });
+      } else {
+        res = await resJson.json();
+        dispatch({ type: USERS_SUCCESS, payload: res });
       }
-      const res = await resJson.json();
-      dispatch({ type: USERS_SUCCESS, payload: res });
     } catch (error) {
       dispatch({ type: USERS_ERROR, payload: error });
     }

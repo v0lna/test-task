@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import propTypes from 'prop-types';
 import getDate from '../../utils/dateConverter';
+import { userStorePropTypes } from '../../containers/UsersContainer';
 
 const Users = ({ usersStore: { users, loading, error } }) => {
   if (error) {
@@ -32,10 +32,6 @@ const Users = ({ usersStore: { users, loading, error } }) => {
   );
 };
 Users.propTypes = {
-  usersStore: propTypes.objectOf({
-    users: propTypes.array.isRequired,
-    loading: propTypes.bool.isRequired,
-    error: propTypes.string.isRequired,
-  }).isRequired,
+  usersStore: userStorePropTypes.isRequired,
 };
 export default Users;
