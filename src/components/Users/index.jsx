@@ -17,7 +17,7 @@ const Users = ({ usersStore: { users, loading, error } }) => {
 
       <Link to="/add">
         <button type="button" className={style.myButton}>
-          Add new user{' '}
+          Add new user
         </button>
       </Link>
       {loading && <p> Loading ...</p>}
