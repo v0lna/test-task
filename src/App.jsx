@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { Header, AddUser, About } from './components';
-import { UserContainer } from './containers';
+import { Header, About } from './components';
+import { UserContainer, AddUserContainer } from './containers';
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <Header />
       <Switch>
         <Route exact path="/" component={UserContainer} />
-        <Route path="/add" component={AddUser} />
+        <Route path="/add" component={AddUserContainer} />
         <Route path="/about" component={About} />
         <Redirect to="/" />
       </Switch>

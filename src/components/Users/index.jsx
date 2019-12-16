@@ -25,7 +25,7 @@ const Users = ({ usersStore: { users, loading, error } }) => {
         <div className={style.usersContainer}>
           {users.map((user) => (
             <div key={user.id} className={style.userCard}>
-              <span>{`${user.name} ${user.secondName}`}</span>
+              <span>{`${user.name} ${user.surname}`}</span>
               <span className={style.timeStyle}>{getDate(user.createdAt)}</span>
             </div>
           ))}
