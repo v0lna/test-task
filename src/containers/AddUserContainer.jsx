@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { AddUser } from '../components/index';
 import getFacts from '../redux/actions/meowFacts';
+import { userUrl } from '../config/index';
 
 export class AddUserContainer extends Component {
   constructor(props) {
@@ -13,7 +14,7 @@ export class AddUserContainer extends Component {
     this.state = {
       isAdded: false,
     };
-    this.changedIsAdded = this.changedIsAdded.bind(this);
+    this.formSubmit = this.formSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -27,18 +28,39 @@ export class AddUserContainer extends Component {
     }));
   }
 
+  async formSubmit(logData) {
+    const createdAt = Date.now();
+    let { cardNumber } = logData;
+    if (!logData.cardNumber) {
+      cardNumber = '';
+    } else {
+      cardNumber = cardNumber.split(' ').join('');
+    }
+    const userData = { ...logData, createdAt, cardNumber };
+    const res = await fetch(userUrl, {
+      method: 'post',
+      headers: {
+        'Content-type': 'application/json;charset=utf-8',
+      },
+      body: JSON.stringify(userData),
+    });
+    if (res.ok) {
+      this.changedIsAdded();
+    }
+  }
+
   render() {
     const { meowFactsState } = this.props;
     const { isAdded } = this.state;
 
     if (isAdded) return <Redirect to="/" />;
-    return <AddUser changedIsAdded={this.changedIsAdded} meowFactsState={meowFactsState} />;
+    return <AddUser formSubmit={this.formSubmit} meowFactsState={meowFactsState} />;
   }
 }
 const factsStatePropTypes = PropTypes.shape({
   loading: PropTypes.bool.isRequired,
   facts: PropTypes.string.isRequired,
-  error: PropTypes.string.isRequired,
+  error: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.bool.isRequired]),
 });
 
 AddUserContainer.propTypes = {
