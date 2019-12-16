@@ -29,7 +29,9 @@
     "no-case-declarations": "off",
     "react/jsx-wrap-multilines": ["error", { "declaration": false, "assignment": false }],
     "react/jsx-props-no-spreading": "off",
-    "react/forbid-prop-types": "off"
+    "react/forbid-prop-types": "off",
+    "jsx-a11y/label-has-associated-control": "off",
+    "react/require-default-props": "off"
   },
   "parserOptions": {
     "ecmaFeatures": {

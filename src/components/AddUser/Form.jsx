@@ -3,6 +3,8 @@ import { Field, reduxForm } from 'redux-form';
 import propTypes from 'prop-types';
 import { validate, normalizeField, normalizeFieldCreditCard } from '../../utils/addUserHelpers';
 import { InputText, InputRadio } from './Inputs';
+import '../../App.css';
+import style from './style.module.css';
 
 class Form extends Component {
   constructor(props) {
@@ -23,37 +25,51 @@ class Form extends Component {
 
     const { handleSubmit, invalid } = this.props;
     return (
-      <form onSubmit={handleSubmit}>
-        <div>
-          <Field
-            component={InputText}
-            normalize={normalizeField}
-            name="name"
-            type="text"
-            placeholder="Your name"
-          />
-        </div>
-        <div>
-          <Field
-            component={InputText}
-            normalize={normalizeField}
-            name="surname"
-            type="text"
-            placeholder="Your surname"
-          />
-        </div>
-        <div>
-          <span>Sex</span>
+      <form onSubmit={handleSubmit} className={style.formContainer}>
+        <div className={style.labelAndFieldContainer}>
+          <label className={style.fieldLabel} htmlFor="nameInput" style={{ paddingLeft: '23px' }}>
+            Name:
+          </label>
           <div>
-            <span>
-              <Field name="sex" component="input" type="radio" value="male" />
+            <Field
+              component={InputText}
+              normalize={normalizeField}
+              name="name"
+              type="text"
+              placeholder="Your name"
+              id="nameInput"
+              myStyle="errorName"
+            />
+          </div>
+        </div>
+        <div className={style.labelAndFieldContainer}>
+          <label className={style.fieldLabel} htmlFor="surnameInput">
+            Surname:
+          </label>
+          <div>
+            <Field
+              component={InputText}
+              normalize={normalizeField}
+              name="surname"
+              type="text"
+              placeholder="Your surname"
+              id="surnameInput"
+            />
+          </div>
+        </div>
+        <div className={style.labelAndFieldContainer} style={{ paddingTop: '15px' }}>
+          <span className={style.fieldLabel} style={{ paddingLeft: '40px' }}>
+            Sex:
+          </span>
+          <div>
+            <label htmlFor="gender-male">
+              <Field name="sex" component="input" type="radio" value="male" id="gender-male" />
               Male
-            </span>
-            <span>
-              <Field name="sex" component="input" type="radio" value="female" />
+            </label>
+            <label htmlFor="gender-female">
+              <Field name="sex" component="input" type="radio" value="female" id="gender-female" />
               Female
-            </span>
-
+            </label>
             <Field
               name="sex"
               component={InputRadio}
@@ -63,28 +79,43 @@ class Form extends Component {
             />
           </div>
         </div>
-        <div>
-          <span>Loyalty propgram</span>
+        <div className={style.labelAndFieldContainer}>
+          <span className={style.fieldLabel} style={{ paddingLeft: '40px' }}>
+            Loyalty propgram:
+          </span>
           <div>
             <Field name="loyaltyPropgram" component="select" onChange={this.changeSelect}>
               <option value="unavailable">Unavailable</option>
               <option value="plasticCard">Plastic card</option>
               <option value="mobileApp"> Mobile app</option>
             </Field>
-            {selected !== 'plasticCard' ? null : (
-              <Field
-                component={InputText}
-                name="cardNumber"
-                type="text"
-                placeholder="Enter your card number"
-                normalize={normalizeFieldCreditCard}
-              />
-            )}
           </div>
         </div>
-        <button type="submit" disabled={invalid}>
-          Submit
-        </button>
+        {selected !== 'plasticCard' ? null : (
+          <div className={style.labelAndFieldContainer}>
+            <label
+              htmlFor="cardNumber"
+              className={style.fieldLabel}
+              // style={{ paddingLeft: '40px' }}
+            >
+              Card number:
+            </label>
+            <Field
+              component={InputText}
+              name="cardNumber"
+              type="text"
+              placeholder="Enter card number"
+              normalize={normalizeFieldCreditCard}
+              id="cardNumber"
+              myStyle="errorCardNumber"
+            />
+          </div>
+        )}
+        <div className={style.labelAndFieldContainer}>
+          <button type="submit" disabled={invalid} className="myButton">
+            Submit
+          </button>
+        </div>
       </form>
     );
   }

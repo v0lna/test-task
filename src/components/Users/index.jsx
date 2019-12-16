@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import getDate from '../../utils/dateConverter';
 import { userStorePropTypes } from '../../containers/UsersContainer';
 import style from './style.module.css';
+import '../../App.css';
 
 const Users = ({ usersStore: { users, loading, error } }) => {
   if (error) {
@@ -16,7 +17,7 @@ const Users = ({ usersStore: { users, loading, error } }) => {
       <h1>Users page</h1>
 
       <Link to="/add">
-        <button type="button" className={style.myButton}>
+        <button type="button" className="myButton">
           Add new user
         </button>
       </Link>

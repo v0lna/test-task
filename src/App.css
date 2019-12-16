@@ -2,5 +2,94 @@
   text-align: center;
   display: flex;
   justify-content: center;
-  flex-direction: column; 
+  flex-direction: column;
+}
+
+.myButton {
+  background-color: #7892c2;
+  border: 1px solid #4e6096;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 17px;
+  padding: 10px 31px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #283966;
+}
+.myButton:hover {
+  background-color: #476e9e;
+}
+.myButton:active {
+  position: relative;
+  top: 1px;
+}
+
+button:disabled,
+button[disabled] {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+.myButton:hover:disabled {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+.myButton:active:disabled {
+  position: relative;
+  top: 0px;
+}
+
+input[type='text'] {
+  font: 15px/24px 'Muli', sans-serif;
+  color: #333;
+  width: 100%;
+  box-sizing: border-box;
+  letter-spacing: 1px;
+}
+
+:focus {
+  outline: none;
+}
+.effect1 {
+  border: 0;
+  padding: 7px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.effect1 ~ .focus-border {
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #4caf50;
+  transition: 0.4s;
+}
+.effect1 ~ .focus-border-error {
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: rgb(216, 60, 60);
+  transition: 0.4s;
+}
+.effect1:focus ~ .focus-border {
+  width: 100%;
+  transition: 0.4s;
+}
+
+.effect1:focus ~ .focus-border {
+  display: block;
+  width: 100%;
+  transition: 0.4s;
+}
+.effect1:focus ~ .focus-border-error {
+  display: block;
+  width: 100%;
+  transition: 0.4s;
+}
+
+h1 {
+  margin: 0.5rem;
 }

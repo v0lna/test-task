@@ -1,32 +1,64 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import style from './style.module.css';
 
-const InputText = ({ input, meta: { touched, error }, placeholder }) => {
-  return (
-    <div className="input-row">
-      <input {...input} type="text" placeholder={placeholder} />
-      {touched && error && <span className="error">{error}</span>}
-    </div>
-  );
-};
-
-const InputRadio = ({ input, meta: { touched, error }, placeholder }) => {
+const InputText = ({
+  input,
+  meta: { touched, error },
+  placeholder,
+  id,
+  myStyle,
+  type = 'text',
+}) => {
+  let errorText = ' ';
+  let borderColor = 'focus-border';
+  if (touched) {
+    errorText = error || ' ';
+    borderColor = error ? 'focus-border-error' : 'focus-border';
+  } else {
+    errorText = ' ';
+  }
   return (
     <>
-      <input {...input} type="radio" />
-      <span>{placeholder}</span>
-      {touched && error && <span className="error">{error}</span>}
+      <div className={style.inputWidth}>
+        <input {...input} type={type} placeholder={placeholder} className="effect1" id={id} />
+        <span className={borderColor} />
+      </div>
+      <span className={`${style.error} ${style[myStyle]}`}>{errorText}</span>
     </>
   );
 };
 
-export const inputsPropTypes = {
+const InputRadio = ({ input, meta: { touched, error }, placeholder }) => {
+  let errorText = ' ';
+  if (touched) {
+    errorText = error || ' ';
+  } else {
+    errorText = ' ';
+  }
+  return (
+    <>
+      <label htmlFor="gender-other">
+        <input {...input} type="radio" id="gender-other" />
+        {placeholder}
+      </label>
+      {touched && error && <span className={style.error}>{errorText}</span>}
+    </>
+  );
+};
+
+InputText.propTypes = {
+  input: propTypes.object.isRequired,
+  meta: propTypes.object.isRequired,
+  placeholder: propTypes.string.isRequired,
+  id: propTypes.string.isRequired,
+  myStyle: propTypes.string,
+  type: propTypes.string,
+};
+InputRadio.propTypes = {
   input: propTypes.object.isRequired,
   meta: propTypes.object.isRequired,
   placeholder: propTypes.string.isRequired,
 };
-
-InputText.propTypes = inputsPropTypes;
-InputRadio.propTypes = inputsPropTypes;
 
 export { InputText, InputRadio };

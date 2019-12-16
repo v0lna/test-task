@@ -1,0 +1,68 @@
+.formWrapper {
+  width: 45%;
+  height: 430px;
+  margin: 20px auto;
+  box-shadow: 1px 2px 12px -2px rgb(119, 119, 119);
+}
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  position: relative;
+}
+.error {
+  color: red;
+  font-family: monospace;
+  position: absolute;
+  left: 218px;
+}
+.inputWidth {
+  width: 200px;
+}
+.timeStyle {
+  font-style: italic;
+}
+.fieldLabel {
+  margin-right: 15px;
+}
+.labelAndFieldContainer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.errorCardNumber {
+  left: 236px;
+  top: 273px;
+}
+
+.wrapMeowFact {
+  width: 95%;
+  margin-bottom: 45px;
+}
+@media (max-width: 520px) {
+  p,
+  h1,
+  h2,
+  h3,
+  label {
+    font-size: 0.9rem;
+  }
+  .formWrapper {
+    width: 95%;
+  }
+  .usersContainer {
+    width: 92%;
+  }
+  .userCard {
+    flex-direction: column;
+    height: 80px;
+  }
+  .error {
+    left: 80px;
+  }
+  .errorCardNumber {
+    left: 121px;
+    top: 273px;
+  }
+}

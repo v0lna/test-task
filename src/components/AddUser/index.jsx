@@ -1,15 +1,18 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import AddUserForm from './Form';
+import style from './style.module.css';
 
 const AddUser = ({ meowFactsState, formSubmit }) => {
   const { facts } = meowFactsState;
   return (
-    <div>
-      <h1>Add new user</h1>
-      <AddUserForm onSubmit={formSubmit} />
-      {!!facts && <p>{facts}</p>}
-    </div>
+    <>
+      <div className={style.formWrapper}>
+        <h1>Add new user</h1>
+        <AddUserForm onSubmit={formSubmit} />
+      </div>
+      <div className={style.wrapMeowFact}>{!!facts && <p>{facts}</p>}</div>
+    </>
   );
 };
 

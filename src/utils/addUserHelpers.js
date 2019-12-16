@@ -9,9 +9,9 @@ const validate = ({ name, surname, sex, cardNumber }) => {
   }
 
   if (!surname) {
-    errors.surname = 'Sursurname field required';
+    errors.surname = 'Surname field required';
   } else if (surname.length < 2) {
-    errors.surname = 'The sursurname must be at least 2 characters long';
+    errors.surname = 'The Surname must be at least 2 characters long';
   } else if (surname.indexOf(' ') > 0) {
     errors.surname = 'Surname should not contain spaces';
   }
@@ -21,6 +21,8 @@ const validate = ({ name, surname, sex, cardNumber }) => {
   }
   if (!cardNumber) {
     errors.cardNumber = 'Card number required';
+  } else if (cardNumber.length !== 19) {
+    errors.cardNumber = 'Enter full number of card';
   }
   return errors;
 };
