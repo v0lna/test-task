@@ -19,3 +19,13 @@
   color: #ffffff;
   text-decoration: none;
 }
+
+@media (max-width: 520px) {
+  .headerContainer {
+    justify-content: center;
+    height: 7vh;
+  }
+  .navItemContainer {
+    margin-right: 15px;
+  }
+}
