@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './style.module.css';
+import { avatarUrl } from '../../config';
 
 const About = () => {
   return (
@@ -19,6 +20,7 @@ const About = () => {
           Github
         </a>
       </div>
+      <img src={avatarUrl} alt="Sergey avatar" className={style.avatar} />
     </div>
   );
 };
