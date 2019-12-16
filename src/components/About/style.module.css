@@ -1,0 +1,47 @@
+.aboutPage {
+  width: 70%;
+  margin: 0 auto;
+  box-shadow: 1px 2px 12px -2px rgb(119, 119, 119);
+  margin-top: 20px;
+}
+.authorWrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5px;
+  width: 55%;
+  justify-items: center;
+  margin: 0 auto;
+}
+.itemFirstcolumn {
+  justify-self: flex-end;
+}
+.itemSecondcolumn {
+  justify-self: flex-start;
+}
+span {
+  font-size: 1.2rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+@media (max-width: 520px) {
+  .aboutPage {
+    width: 95%;
+  }
+  .authorWrapper {
+    width: 90%;
+    grid-template-columns: 1fr 2fr;
+    margin-bottom: 15px;
+  }
+  span {
+    font-size: 0.9rem;
+  }
+  .itemFirstcolumn {
+    justify-self: center;
+  }
+  .itemSecondcolumn {
+    justify-self: flex-start;
+  }
+}

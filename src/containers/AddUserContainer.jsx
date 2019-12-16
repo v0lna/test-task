@@ -60,7 +60,7 @@ export class AddUserContainer extends Component {
 const factsStatePropTypes = PropTypes.shape({
   loading: PropTypes.bool.isRequired,
   facts: PropTypes.string.isRequired,
-  error: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.bool.isRequired]),
+  error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]).isRequired,
 });
 
 AddUserContainer.propTypes = {

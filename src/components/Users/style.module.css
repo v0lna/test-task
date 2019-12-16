@@ -4,7 +4,7 @@
 }
 .usersContainer {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   width: 450px;
   margin: 0 auto;
   margin-top: 15px;

@@ -29,7 +29,7 @@ const mapDispatchToProps = (dispatch) => ({
 export const userStorePropTypes = propTypes.shape({
   users: propTypes.array.isRequired,
   loading: propTypes.bool.isRequired,
-  error: propTypes.oneOfType([propTypes.bool, propTypes.objectOf]).isRequired,
+  error: propTypes.oneOfType([propTypes.bool, propTypes.object]).isRequired,
 });
 
 UsersContainer.propTypes = {
