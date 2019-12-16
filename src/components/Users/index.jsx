@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import getDate from '../../utils/dateConverter';
 import { userStorePropTypes } from '../../containers/UsersContainer';
 import style from './style.module.css';
+import '../../App.css';
 
 const Users = ({ usersStore: { users, loading, error } }) => {
   if (error) {
@@ -16,8 +17,8 @@ const Users = ({ usersStore: { users, loading, error } }) => {
       <h1>Users page</h1>
 
       <Link to="/add">
-        <button type="button" className={style.myButton}>
-          Add new user{' '}
+        <button type="button" className="myButton">
+          Add new user
         </button>
       </Link>
       {loading && <p> Loading ...</p>}
@@ -25,7 +26,7 @@ const Users = ({ usersStore: { users, loading, error } }) => {
         <div className={style.usersContainer}>
           {users.map((user) => (
             <div key={user.id} className={style.userCard}>
-              <span>{`${user.name} ${user.secondName}`}</span>
+              <span>{`${user.name} ${user.surname}`}</span>
               <span className={style.timeStyle}>{getDate(user.createdAt)}</span>
             </div>
           ))}

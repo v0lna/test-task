@@ -21,7 +21,7 @@ class UsersContainer extends Component {
   }
 }
 
-const mapStateToProps = (store) => ({ usersStore: store });
+const mapStateToProps = (store) => ({ usersStore: store.users });
 const mapDispatchToProps = (dispatch) => ({
   getUsers: bindActionCreators(getUsers, dispatch),
 });
